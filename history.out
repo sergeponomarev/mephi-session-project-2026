@@ -28,6 +28,13 @@
    28  sudo mkfs.ext4 /dev/vdb1
    29  sudo mkdir -p /mephi-web
    30  sudo mount /dev/vdb1 /mephi-web/
+# Забыл добавить метку диска   
+215  lsblk -f
+216  sudo umount /dev/vdb1
+217  sudo e2label /dev/vdb1 "MEPHI_WEB"
+218  mount -a
+219  sudo mount -a
+220  lsblk -f
    31  df -h /mnt/data
    32  df -h /mephi-web/
    33  sudo blkid /dev/vdb1
