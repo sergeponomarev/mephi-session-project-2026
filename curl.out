@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MEPhI Web Server</title>
+</head>
+<body>
+    <h1>Добро пожаловать на нестандартный веб-сервер под защитой SELinux!</h1>
+    <p>Hello from Student: 372192</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+  File: /data/mephi-2026
+  Size: 4096      	Blocks: 16         IO Block: 4096   directory
+Device: 252,2	Inode: 777218      Links: 2
+Access: (2770/drwxrws---)  Uid: (    0/    root)   Gid: ( 1001/ devteam)
+Context: unconfined_u:object_r:default_t:s0
+Access: 2026-09-30 14:40:27.166976103 +0300
+Modify: 2026-09-30 15:58:02.943568956 +0300
+Change: 2026-09-30 15:58:02.943568956 +0300
+ Birth: 2026-09-30 14:40:27.166976103 +0300
+  File: /mephi-web
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 252,17	Inode: 2           Links: 3
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:httpd_sys_content_t:s0
+Access: 2026-09-30 16:24:25.886951218 +0300
+Modify: 2026-09-30 16:22:42.426179019 +0300
+Change: 2026-09-30 16:24:18.383750147 +0300
+ Birth: 2026-09-30 14:04:22.000000000 +0300
+# file: data/mephi-2026
+# owner: root
+# group: devteam
+# flags: -s-
+user::rwx
+group::rwx
+group:devteam:rwx
+group:curators:r-x
+mask::rwx
+other::---
+default:user::rwx
+default:group::rwx
+default:group:devteam:rwx
+default:group:curators:r-x
+default:mask::rwx
+default:other::---
+

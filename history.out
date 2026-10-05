@@ -1,0 +1,174 @@
+    1  htop
+    2  uname -a
+    3  history 
+    4  systemctl status NetworkManager
+    5  тьегш
+    6  nmtui
+    7  ip a
+    8  ping 8.8.8.8
+    9  hostnamectl mephi-2026.domain.local
+   10  sudo hostnamectl set-hostname mephi-2026.domain.local
+   11  sudo mc
+   12  sudo reboot
+   13  history 
+   14  sudo dnf update
+   15  sudo dnf install nginx libcap-ng-utils
+   16  sudo systemctl status nginx
+   17  sudo dnf download --destdir=/tmp tcpdump
+   18  ls -l /tmp/tcpdump*.rpm
+   19  sudo rpm -ivh /tmp/tcpdump-4.99.5-1.red80.x86_64.rpm 
+   20  dnf history 
+   21  sudo parted
+   22  fdisk -l
+   23  sudo fdisk -l
+   24  sudo parted /deb/vdb
+   25  sudo parted /dev/vdb
+   26  sudo partprobe /dev/vdb
+   27  lsblk
+   28  sudo mkfs.ext4 /dev/vdb1
+   29  sudo mkdir -p /mephi-web
+   30  sudo mount /dev/vdb1 /mephi-web/
+   31  df -h /mnt/data
+   32  df -h /mephi-web/
+   33  sudo blkid /dev/vdb1
+   34  sudo nano /etc/fstab 
+   35  mount -a
+   36  sudo cat /etc/fstab 
+   37  sudo reboot
+   38  sudo mc
+   39  sudo systemctl restart sshd
+   40  history 
+   41  sudo history 
+   42  tcpdump
+   43  whereis tcpdump 
+   44  stat /usr/sbin/tcpdump 
+   45  ls -la $(which tcpdump)
+   46  getcap $(which tcpdump)
+   47  sudo setcap cap_net_raw,cap_net_admin=eip $(which tcpdump)
+   48  getcap $(which tcpdump)
+   49  history 
+   50  lsnlk
+   51  lsblk
+   52  sudo systemctl start nginx
+   53  sudo systemctl status nginx
+   54  sudo systemctl enable nginx
+   55  curl -I http://localhost
+   56  cd /home/sitroot/
+   57  mkdir result
+   58  cd result/
+   59  history > history.out.30.09
+   60  journalctl -u nginx.service
+   61  sudo journalctl -u nginx.service
+   62  sudo journalctl -u nginx.service -b > journalctl.out
+   63  cat journalctl.out 
+   64  dnf history 
+   65  sudo dnf history 
+   66  dnf history 
+   67  dnf history > dnf.out
+   68  history 
+   69  $ ping -c 4 8.8.8.8 > ping.out
+   70  ping -c 4 8.8.8.8 > ping.out
+   71  cat ping.out 
+   72  sudo nano /etc/security/pwquality.conf
+   73  sudo nano /etc/login.defs
+   74  sudo groupadd devteam
+   75  sudo useradd -m -u 5501 -g devteam user1
+   76  sudo useradd -m -u 5502 -g devteam user2
+   77  sudo useradd -m -u 5503 -g devteam user3
+   78  history 
+   79  sudo passwd user1
+   80  sudo passwd user2
+   81  sudo passwd user3
+   82  history 
+   83  sudo groupadd -g 4444 curators
+   84  sudo useradd -m -G curators curator1
+   85  sudo useradd -m -G curators curator2
+   86  ls /home
+   87  sudo passwd curator1
+   88  sudo passwd curator2
+   89  sudo mkdir -p /data/mephi-2026
+   90  sudo chown root:devteam /data/mephi-2026
+   91  sudo chmod 2770 /data/mephi-2026
+   92  ls
+   93  sudo setfacl -m g:devteam:rwx /data/mephi-2026
+   94  sudo setfacl -m g:curators:r-x /data/mephi-2026
+   95  sudo setfacl -m o::--- /data/mephi-2026
+   96  sudo setfacl -d -m g:devteam:rwx /data/mephi-2026
+   97  sudo setfacl -d -m g:curators:r-x /data/mephi-2026
+   98  sudo setfacl -d -m o::--- /data/mephi-2026
+   99  getfacl /data/mephi-2026
+  100  sudo -u user1 touch /data/mephi-2026/test1.txt
+  101  sudo -u user1 bash -c 'echo "hello from user1" > /data/mephi-2026/test1.txt'
+  102  sudo -u user2 bash -c 'echo "added by user2" >> /data/mephi-2026/test1.txt'
+  103  sudo -u user2 cat /data/mephi-2026/test1.txt
+  104  sudo -u curator1 cat /data/mephi-2026/test1.txt
+  105  sudo -u curator1 bash -c 'echo "hack" >> /data/mephi-2026/test1.txt'
+  106  stat /data/mephi-2026
+  107  history > history.out.30.09.ACL 
+  108  cat history.out.30.09.ACL 
+  109  $ sudo -u user1 tcpdump
+  110  tcpdump 
+  111  su -u user1
+  112  su - user1
+  113  getcap /usr/sbin/tcpdump > ~/getcap.out
+  114  ls
+  115  getcap /usr/sbin/tcpdump > getcap.out
+  116  cat getcap.out 
+  117  stat /usr/sbin/tcpdump 
+  118  getenforce
+  119  sudo mc
+  120  sudo nginx -t
+  121  sudo nano /etc/nginx/conf.d/mephi.site.conf 
+  122  sudo nano /etc/nginx/nginx.conf 
+  123  sudo nginx -t
+  124  sudo systemctl reload nginx
+  125  curl -I http://localhost
+  126  nano /mephi-web/index.html
+  127  sudo nano /mephi-web/index.html
+  128  curl -I http://localhost
+  129  ls -Z /mephi-web
+  130  ls -Z /usr/share/nginx/html/
+  131  sudo chcon -Rt httpd_sys_content_t /mephi-web
+  132  ls -Z /mephi-web
+  133  semanage
+  134  sudo dnf install -y policycoreutils-python-utils
+  135  sudo semanage fcontext -a -t httpd_sys_content_t "/mephi-web(/.*)?"
+  136  sudo restorecon -Rv /mephi-web
+  137  sudo semanage fcontext -l | grep mephi-web
+  138  curl http://localhost
+  139  sudo grep nginx /var/log/audit/audit.log | grep denied
+  140  curl http://localhost
+  141  ping -c 4 8.8.8.8 > ~/ping.out
+  142  stat /data/mephi-2026 > ~/stat.out
+  143  getcap /usr/sbin/tcpdump > ~/getcap.out
+  144  dnf history > ~/dnf.out
+  145  journalctl -u nginx -b > ~/journalctl.out
+  146  getenforce > ~/getenforce.out
+  147  stat /mephi-web >> ~/stat.out
+  148  curl http://localhost/ > curl.out
+  149  cd /home/sitroot/
+  150  ls
+  151  cat dnf.out 
+  152  cat getcap.out 
+  153  cat getenforce.out 
+  154  cat journalctl.out 
+  155  cat ping.out 
+  156  cat stat.out 
+  157  getfacl /data/mephi-2026
+  158  getfacl /data/mephi-2026 >> stat.out 
+  159  cat stat.out 
+  160  cd /data/
+  161  ls
+  162  cd mephi-2026/
+  163  cd /home/sitroot/
+  164  ls
+  165  history > history.out
+  166  cat history.out 
+  167  sudo mc
+  168  sudo su - curator1
+  169  sudo mc
+  170  su - curator1
+  171  sudo mc
+  172  su - curator1
+  173  sudo mc
+  174  history > history.out 
