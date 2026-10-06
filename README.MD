@@ -72,4 +72,42 @@ sudo journalctl -u nginx.service
 5.3. Мандатное управление доступом (MAC)
 Убедитесь, что SELinux работает в режиме "Enforcing" (включен).
 Веб-сервер nginx должен отдавать файлы из нестандартной директории /mephi-web.
+Настройки сайта nginx:
+server {
+    listen       80 default_server;
+    listen       [::]:80 default_server;
+    server_name  _;
+    root         /mephi-web;
+    location / {
+    }
+}
+  5.3.1 Проверяем контекст директории ls -Z /mephi-web
+  5.3.2 Ставим утилиту semanage
+   sudo dnf install -y policycoreutils-python-utils
+   sudo semanage fcontext -a -t httpd_sys_content_t "/mephi-web(/.*)?"
+   sudo restorecon -Rv /mephi-web # применяем контекст
+   Результат:
+    [root@mephi-2026 result]# curl http://localhost
+   <!DOCTYPE html>
+   <html>
+    <head>
+     <title>MEPhI Web Server</title>
+    </head>
+    <body>
+      <h1>Добро пожаловать на нестандартный веб-сервер под защитой SELinux!</h1>
+      <p>Hello from Student: 372192</p>
+    </body>
+  </html>
+
+Раздел 6. Аутентификация (5 баллов)
+6.1. Ограничение входа для пользователей
+   В /etc/pam.d/login включаем account required pam_access.so. Теперь логин с консоли будет согласовываться с файлом /etc/security/access.conf.
+   Чтобы не было возможности зайти через su, тоже самое сделано в   /etc/pam.d/su
+Кураторы проекта не должны иметь возможности входить в систему локально (через консоль). Все остальные пользователи должны иметь возможность входить в систему.
+6.2. Управление паролями
+Пользователь должен менять свой пароль каждые 90 дней.
+ /etc/login.defs поле PASS_MAX_DAYS = 90
+Минимальная длина пароля пользователя должна быть 12 символов.
+  /etc/security/pwquality.conf  поле minlen = 12
+
 
